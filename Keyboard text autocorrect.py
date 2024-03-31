@@ -135,7 +135,7 @@ def autocorrect(word):
     else:
         similarities = [1-(textdistance.Jaccard(qval=2)).distance(w,word) for w in word_freq_dict.keys()]
         df = pd.DataFrame.from_dict(prob, orient='index').reset_index()
-        df = df.rename(columns={'index':'Word', 0:'Probability'})  #hum dono columns ka name rename kar rahe
+        df = df.rename(columns={'index':'Word', 0:'Probability'})  #renaming names of both the columns
         df['Similarity'] = similarities
         output = df.sort_values(['Similarity','Probability'],ascending=False).head(10)  
         return(output)
